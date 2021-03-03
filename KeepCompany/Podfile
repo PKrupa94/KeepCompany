@@ -9,8 +9,7 @@ target 'KeepCompany' do
 pod 'Firebase/Auth'
 pod 'Firebase/Database'
 pod 'Firebase'
-pod 'Firebase/InAppMessaging'
-pod 'Firebase/Analytics'
+pod 'Firebase/Firestore'
 
   target 'KeepCompanyTests' do
     inherit! :search_paths
