@@ -6,12 +6,24 @@
 //
 
 import SwiftUI
+import Firebase
 
 @main
 struct KeepCompanyApp: App {
+    
+    init() {
+        firebaseSetup()
+    }
+    
     var body: some Scene {
         WindowGroup {
             ContentView()
         }
+    }
+}
+
+private extension KeepCompanyApp{
+    func firebaseSetup(){
+        FirebaseApp.configure()
     }
 }

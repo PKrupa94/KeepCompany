@@ -10,6 +10,7 @@ pod 'Firebase/Auth'
 pod 'Firebase/Database'
 pod 'Firebase'
 pod 'Firebase/Firestore'
+pod 'FirebaseFirestore', :git => 'https://github.com/firebase/firebase-ios-sdk.git', :branch => 'master'
 
   target 'KeepCompanyTests' do
     inherit! :search_paths

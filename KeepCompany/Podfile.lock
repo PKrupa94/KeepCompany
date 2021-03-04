@@ -342,6 +342,7 @@ DEPENDENCIES:
   - Firebase/Auth
   - Firebase/Database
   - Firebase/Firestore
+  - FirebaseFirestore (from `https://github.com/firebase/firebase-ios-sdk.git`, branch `master`)
 
 SPEC REPOS:
   trunk:
@@ -353,7 +354,6 @@ SPEC REPOS:
     - FirebaseCore
     - FirebaseCoreDiagnostics
     - FirebaseDatabase
-    - FirebaseFirestore
     - FirebaseInstallations
     - GoogleAppMeasurement
     - GoogleDataTransport
@@ -364,6 +364,16 @@ SPEC REPOS:
     - leveldb-library
     - nanopb
     - PromisesObjC
+
+EXTERNAL SOURCES:
+  FirebaseFirestore:
+    :branch: master
+    :git: https://github.com/firebase/firebase-ios-sdk.git
+
+CHECKOUT OPTIONS:
+  FirebaseFirestore:
+    :commit: 02357e7f028ef57fc7c075b7841caa6e450dc05a
+    :git: https://github.com/firebase/firebase-ios-sdk.git
 
 SPEC CHECKSUMS:
   abseil: 6c8eb7892aefa08d929b39f9bb108e5367e3228f
@@ -386,6 +396,6 @@ SPEC CHECKSUMS:
   nanopb: 59221d7f958fb711001e6a449489542d92ae113e
   PromisesObjC: 3113f7f76903778cf4a0586bd1ab89329a0b7b97
 
-PODFILE CHECKSUM: 72df67b2a9be5cb818766eb60628b631709e11d6
+PODFILE CHECKSUM: a4dc298169007e726b07880c1d47c0609f3aabf4
 
 COCOAPODS: 1.10.1
