@@ -25,6 +25,7 @@
 		FFDF802D25F07E8500299892 /* Restaurant.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFDF802C25F07E8500299892 /* Restaurant.swift */; };
 		FFDF80A625F1951E00299892 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFDF80A525F1951E00299892 /* UserModel.swift */; };
 		FFDF80AB25F19E3500299892 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFDF80AA25F19E3500299892 /* LoginView.swift */; };
+		FFDF80BC25F1D16A00299892 /* FirebaseAuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFDF80BB25F1D16A00299892 /* FirebaseAuthManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -75,6 +76,7 @@
 		FFDF802C25F07E8500299892 /* Restaurant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Restaurant.swift; sourceTree = "<group>"; };
 		FFDF80A525F1951E00299892 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		FFDF80AA25F19E3500299892 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		FFDF80BB25F1D16A00299892 /* FirebaseAuthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseAuthManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -217,6 +219,7 @@
 			children = (
 				FFDF802C25F07E8500299892 /* Restaurant.swift */,
 				FFDF80A525F1951E00299892 /* UserModel.swift */,
+				FFDF80BB25F1D16A00299892 /* FirebaseAuthManager.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -466,6 +469,7 @@
 				FFDF802D25F07E8500299892 /* Restaurant.swift in Sources */,
 				FFDF800925F036BA00299892 /* FoodChoiceList.swift in Sources */,
 				FFDF7F9925F030A800299892 /* KeepCompanyApp.swift in Sources */,
+				FFDF80BC25F1D16A00299892 /* FirebaseAuthManager.swift in Sources */,
 				FFDF80A625F1951E00299892 /* UserModel.swift in Sources */,
 				FFDF80AB25F19E3500299892 /* LoginView.swift in Sources */,
 				FFDF802125F0556100299892 /* Helper.swift in Sources */,
