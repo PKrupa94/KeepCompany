@@ -28,7 +28,15 @@ struct FoodChoiceList: View {
                 }) {Text("")}
             }.alert(isPresented:self.$showingAlert, content: {
                 Alert(title:Text("Confirm Dialog"), message: Text(AlertMessage.CONFIRM), primaryButton: Alert.Button.default(Text(AlertMessage.BTNCONFIRM)){
-                    self.selection = 1
+                    let userId = userDefaults.object(forKey: TextConstant.USERID) as? String
+                    //TODO:setup data
+                    firestoreInstace.collection(FirebaseCollection.userIntrest).document(userId!).setData(["name":"Krupa"]) { (error) in
+                        if let err = error{
+                            print(err)
+                        }else{
+                            self.selection = 1
+                        }
+                    }
                 }, secondaryButton: .cancel())
            })
             .navigationTitle(NavigationTitle.CATEGORIES).navigationBarTitleDisplayMode(.inline)

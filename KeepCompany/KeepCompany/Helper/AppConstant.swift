@@ -11,6 +11,13 @@ import FirebaseFirestore
 
 
 let firestoreInstace = Firestore.firestore()
+let userDefaults = UserDefaults.standard
+
+struct FirebaseCollection{
+    static let CuisineList = "CuisineList"
+    static let userIntrest = "UserIntrest"
+    
+}
 
 struct ColorConstant{
     static let ROSE = Color("FieryRose")
@@ -22,6 +29,8 @@ struct TextConstant {
     static let EMAIL = "Email"
     static let PASSWORD = "Password"
     static let LOGIN = "LOGIN"
+    static let USERNAME = "username"
+    static let USERID = "userID"
 }
 
 struct AlertMessage {
