@@ -10,6 +10,7 @@
 		174C8B6858F5069F7698ED91 /* Pods_KeepCompany_KeepCompanyUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 736821D584B150ED8A5990D5 /* Pods_KeepCompany_KeepCompanyUITests.framework */; };
 		6D035871766CFE379CD2D276 /* Pods_KeepCompanyTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 761B64310CC178083E621EBE /* Pods_KeepCompanyTests.framework */; };
 		8A5DF54DDEDF3D6B68303F07 /* Pods_KeepCompany.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CC300DDE65752A9B8F3EF509 /* Pods_KeepCompany.framework */; };
+		FFA5871E25F6BB6F00871A7D /* SignupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFA5871D25F6BB6F00871A7D /* SignupView.swift */; };
 		FFDF7F9925F030A800299892 /* KeepCompanyApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFDF7F9825F030A800299892 /* KeepCompanyApp.swift */; };
 		FFDF7F9B25F030A800299892 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFDF7F9A25F030A800299892 /* ContentView.swift */; };
 		FFDF7F9D25F030A900299892 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FFDF7F9C25F030A900299892 /* Assets.xcassets */; };
@@ -55,6 +56,7 @@
 		C1F78BF54321D385619A07C4 /* Pods-KeepCompany.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KeepCompany.release.xcconfig"; path = "Target Support Files/Pods-KeepCompany/Pods-KeepCompany.release.xcconfig"; sourceTree = "<group>"; };
 		CC300DDE65752A9B8F3EF509 /* Pods_KeepCompany.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_KeepCompany.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F48A807744034577FAD7F6CA /* Pods-KeepCompany.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KeepCompany.debug.xcconfig"; path = "Target Support Files/Pods-KeepCompany/Pods-KeepCompany.debug.xcconfig"; sourceTree = "<group>"; };
+		FFA5871D25F6BB6F00871A7D /* SignupView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignupView.swift; sourceTree = "<group>"; };
 		FFDF7F9525F030A800299892 /* KeepCompany.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KeepCompany.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FFDF7F9825F030A800299892 /* KeepCompanyApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeepCompanyApp.swift; sourceTree = "<group>"; };
 		FFDF7F9A25F030A800299892 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -206,6 +208,7 @@
 		FFDF7FF125F033E000299892 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				FFA5871D25F6BB6F00871A7D /* SignupView.swift */,
 				FFDF7F9A25F030A800299892 /* ContentView.swift */,
 				FFDF800825F036BA00299892 /* FoodChoiceList.swift */,
 				FFDF802525F05A5F00299892 /* MapView.swift */,
@@ -462,6 +465,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FFA5871E25F6BB6F00871A7D /* SignupView.swift in Sources */,
 				FFDF802625F05A5F00299892 /* MapView.swift in Sources */,
 				FFDF7F9B25F030A800299892 /* ContentView.swift in Sources */,
 				FFDF801925F0424C00299892 /* AppConstant.swift in Sources */,

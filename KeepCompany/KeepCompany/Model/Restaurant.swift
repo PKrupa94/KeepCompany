@@ -14,13 +14,22 @@ class CuisineModel: ObservableObject{
     @Published  var arrCuisine:[String] = []
     
     init() {
-        firestoreInstace.collection("CuisineList").getDocuments { [self] (snapshot, error) in
+        firestoreInstace.collection(FirebaseCollection.CuisineList).getDocuments() { [self] (snapshot, error) in
             if let err = error{
                 print(err)
             }else{
                 for doc in snapshot!.documents{
                     print(doc.documentID)
                     arrCuisine.append(doc.documentID)
+//                firestoreInstace.collection(FirebaseCollection.CuisineList).document("Mexican").collection("Maxican").getDocuments { (result, error) in
+//                    for r in result!.documents{
+//                        print(r.documentID)
+//                        print(r.data())
+//                    }
+//                    print(result)
+//                    print(error)
+//                }
+              
                 }
             }
         }

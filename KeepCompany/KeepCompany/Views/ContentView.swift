@@ -9,8 +9,9 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-       // FoodChoiceList()
-        LoginView()
+      // FoodChoiceList()
+        Home()
+        //LoginView()
 //        Text("Hello, world!")
 //            .padding()
     }
