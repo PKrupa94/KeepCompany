@@ -17,7 +17,6 @@ struct FoodChoiceList: View {
     var body: some View {
        // NavigationView{
             NavigationLink(destination: MapView(), tag: 1, selection: self.$selection){}
-
             List(cuisineModel.arrCuisine,id:\.self){ name in
                 Text(name).font(.subheadline).foregroundColor(.black)
                 Button(action: {
@@ -44,7 +43,7 @@ struct FoodChoiceList: View {
            })
             .navigationTitle(NavigationTitle.CATEGORIES).navigationBarTitleDisplayMode(.inline)
             .navigationBarBackButtonHidden(true)
-           // }
+          // }
         }
 }
 

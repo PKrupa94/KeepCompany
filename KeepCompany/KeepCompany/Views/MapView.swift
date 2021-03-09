@@ -23,22 +23,16 @@ struct MapView_Previews: PreviewProvider {
 
 struct MapView: View {
     
-    var objLocation = locationOnMap() // create an instance
-    var arrCoodinates:[MyAnnotationItem] = []
+    @ObservedObject var arrCoodinates = locationOnMap()
     
     @State private var region = MKCoordinateRegion(
         center: CLLocationCoordinate2D(latitude: 34.237923, longitude: -118.530197),
         span: MKCoordinateSpan(latitudeDelta: 0.5, longitudeDelta: 0.5))
     
-    init() {
-        arrCoodinates =  objLocation.getCoodinatesData()
-    }
-    
     var body: some View {
-        Map(coordinateRegion: $region, annotationItems: arrCoodinates) { restaurant in
+        Map(coordinateRegion: $region, annotationItems: arrCoodinates.arrRestaurantCoordinates) { restaurant in
             MapMarker(coordinate: restaurant.coordinates)}
     }
-   
 }
 
 struct MapView_Previews: PreviewProvider {

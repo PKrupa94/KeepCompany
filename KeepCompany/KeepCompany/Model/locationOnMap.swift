@@ -20,9 +20,10 @@ struct MyAnnotationItem:Identifiable{
 class locationOnMap: ObservableObject {
        
      //fetch all documents data
-    var arrRestaurantCoordinates:[MyAnnotationItem] = []
+    @Published var arrRestaurantCoordinates:[MyAnnotationItem] = []
     
-     func getCoodinatesData() -> [MyAnnotationItem] {
+    
+    init() {
         if let getRest = userDefaults.object(forKey: TextConstant.SELECTDEDRES) as? String{
             let docRef = firestoreInstace.collection(FirebaseCollection.CuisineList).document(getRest)
                     docRef.collection(getRest).getDocuments() {(snapshot, error) in
@@ -40,8 +41,8 @@ class locationOnMap: ObservableObject {
                         }
                 }
         }
-        return arrRestaurantCoordinates
     }
+    
 }
     
     
