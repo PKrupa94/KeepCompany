@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		174C8B6858F5069F7698ED91 /* Pods_KeepCompany_KeepCompanyUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 736821D584B150ED8A5990D5 /* Pods_KeepCompany_KeepCompanyUITests.framework */; };
+		5A917F0B25F7007E009B346F /* locationOnMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A917F0A25F7007E009B346F /* locationOnMap.swift */; };
 		6D035871766CFE379CD2D276 /* Pods_KeepCompanyTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 761B64310CC178083E621EBE /* Pods_KeepCompanyTests.framework */; };
 		8A5DF54DDEDF3D6B68303F07 /* Pods_KeepCompany.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CC300DDE65752A9B8F3EF509 /* Pods_KeepCompany.framework */; };
 		FFA5871E25F6BB6F00871A7D /* SignupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFA5871D25F6BB6F00871A7D /* SignupView.swift */; };
@@ -49,6 +50,7 @@
 /* Begin PBXFileReference section */
 		404034C217015408CDDA9B7C /* Pods-KeepCompanyTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KeepCompanyTests.release.xcconfig"; path = "Target Support Files/Pods-KeepCompanyTests/Pods-KeepCompanyTests.release.xcconfig"; sourceTree = "<group>"; };
 		415C4A14A58B5A6C34029839 /* Pods-KeepCompany-KeepCompanyUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KeepCompany-KeepCompanyUITests.debug.xcconfig"; path = "Target Support Files/Pods-KeepCompany-KeepCompanyUITests/Pods-KeepCompany-KeepCompanyUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		5A917F0A25F7007E009B346F /* locationOnMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = locationOnMap.swift; sourceTree = "<group>"; };
 		736821D584B150ED8A5990D5 /* Pods_KeepCompany_KeepCompanyUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_KeepCompany_KeepCompanyUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		761B64310CC178083E621EBE /* Pods_KeepCompanyTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_KeepCompanyTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7F381F264B7AEA919EDE5DF3 /* Pods-KeepCompany-KeepCompanyUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KeepCompany-KeepCompanyUITests.release.xcconfig"; path = "Target Support Files/Pods-KeepCompany-KeepCompanyUITests/Pods-KeepCompany-KeepCompanyUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -223,6 +225,7 @@
 				FFDF802C25F07E8500299892 /* Restaurant.swift */,
 				FFDF80A525F1951E00299892 /* UserModel.swift */,
 				FFDF80BB25F1D16A00299892 /* FirebaseAuthManager.swift */,
+				5A917F0A25F7007E009B346F /* locationOnMap.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -475,6 +478,7 @@
 				FFDF7F9925F030A800299892 /* KeepCompanyApp.swift in Sources */,
 				FFDF80BC25F1D16A00299892 /* FirebaseAuthManager.swift in Sources */,
 				FFDF80A625F1951E00299892 /* UserModel.swift in Sources */,
+				5A917F0B25F7007E009B346F /* locationOnMap.swift in Sources */,
 				FFDF80AB25F19E3500299892 /* LoginView.swift in Sources */,
 				FFDF802125F0556100299892 /* Helper.swift in Sources */,
 			);
