@@ -29,6 +29,7 @@ struct TextConstant {
     static let EMAIL = "Email"
     static let PASSWORD = "Password"
     static let LOGIN = "LOGIN"
+    static let SIGNUP = "SIGN UP"
     static let USERNAME = "username"
     static let USERID = "userID"
 }
@@ -42,6 +43,7 @@ struct AlertMessage {
 
 struct NavigationTitle {
     static let CATEGORIES = "Categories"
+    static let Register = "Register Now"
 }
 
 
