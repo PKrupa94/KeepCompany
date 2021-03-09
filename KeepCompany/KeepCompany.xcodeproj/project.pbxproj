@@ -24,7 +24,6 @@
 		FFDF802125F0556100299892 /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFDF802025F0556100299892 /* Helper.swift */; };
 		FFDF802625F05A5F00299892 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFDF802525F05A5F00299892 /* MapView.swift */; };
 		FFDF802D25F07E8500299892 /* Restaurant.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFDF802C25F07E8500299892 /* Restaurant.swift */; };
-		FFDF80A625F1951E00299892 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFDF80A525F1951E00299892 /* UserModel.swift */; };
 		FFDF80AB25F19E3500299892 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFDF80AA25F19E3500299892 /* LoginView.swift */; };
 		FFDF80BC25F1D16A00299892 /* FirebaseAuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFDF80BB25F1D16A00299892 /* FirebaseAuthManager.swift */; };
 /* End PBXBuildFile section */
@@ -76,7 +75,6 @@
 		FFDF802025F0556100299892 /* Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helper.swift; sourceTree = "<group>"; };
 		FFDF802525F05A5F00299892 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 		FFDF802C25F07E8500299892 /* Restaurant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Restaurant.swift; sourceTree = "<group>"; };
-		FFDF80A525F1951E00299892 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		FFDF80AA25F19E3500299892 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		FFDF80BB25F1D16A00299892 /* FirebaseAuthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseAuthManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -220,7 +218,6 @@
 			children = (
 				FFA5872D25F6F82F00871A7D /* ImagePicker.swift */,
 				FFDF802C25F07E8500299892 /* Restaurant.swift */,
-				FFDF80A525F1951E00299892 /* UserModel.swift */,
 				FFDF80BB25F1D16A00299892 /* FirebaseAuthManager.swift */,
 				5A917F0A25F7007E009B346F /* locationOnMap.swift */,
 			);
@@ -473,7 +470,6 @@
 				FFDF800925F036BA00299892 /* FoodChoiceList.swift in Sources */,
 				FFDF7F9925F030A800299892 /* KeepCompanyApp.swift in Sources */,
 				FFDF80BC25F1D16A00299892 /* FirebaseAuthManager.swift in Sources */,
-				FFDF80A625F1951E00299892 /* UserModel.swift in Sources */,
 				5A917F0B25F7007E009B346F /* locationOnMap.swift in Sources */,
 				FFDF80AB25F19E3500299892 /* LoginView.swift in Sources */,
 				FFDF802125F0556100299892 /* Helper.swift in Sources */,

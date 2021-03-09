@@ -45,7 +45,6 @@ struct LoginView: View {
                 .alert(isPresented: self.$showAlert) {
                     Alert(title:Text(AlertMessage.ERROR), message: Text(AlertMessage.LOGIN_ERROR), dismissButton: .cancel())
                 }
-
             }
             .navigationTitle("").navigationBarHidden(true)
 
