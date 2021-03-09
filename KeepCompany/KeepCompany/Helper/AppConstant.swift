@@ -16,6 +16,11 @@ let userDefaults = UserDefaults.standard
 struct FirebaseCollection{
     static let CuisineList = "CuisineList"
     static let userIntrest = "UserIntrest"
+    static let American = "American"
+    static let Indian = "Indian"
+    static let Italian = "Italian"
+    static let Mexican = "Mexican"
+    static let Users = "Users"
     
 }
 
@@ -32,6 +37,11 @@ struct TextConstant {
     static let SIGNUP = "SIGN UP"
     static let USERNAME = "username"
     static let USERID = "userID"
+    static let SELECTDEDRES = "selectedRestaurant"
+    static let IS_LOGIN = "status"
+    static let CITY = "City"
+    static let AGE = "Age"
+    static let GENDER = "Gender"
 }
 
 struct AlertMessage {
@@ -44,6 +54,9 @@ struct AlertMessage {
 struct NavigationTitle {
     static let CATEGORIES = "Categories"
     static let Register = "Register Now"
+    static let LOGIN = "Login"
 }
+
+
 
 

@@ -12,36 +12,38 @@ import CoreLocation
 import SwiftUI
 
 
-struct MyAnnotationItem{
+struct MyAnnotationItem:Identifiable{
+    let id = UUID()
     var coordinates:CLLocationCoordinate2D
 }
-
 
 class locationOnMap: ObservableObject {
        
      //fetch all documents data
-        private let db = Firestore.firestore()
-        @Published var arrLoc:[MyAnnotationItem] = []
-       
-            init(){
-                let docRef = db.collection("CuisineList").document("American")
-                docRef.collection("American").getDocuments() {(snapshot, error) in
-                    if let error = error{
-                        print("Error getting Documents: \(error)")
-                    }else{
-                        for doc in snapshot!.documents{
-                            if let coords = doc.get("coordinates"){
-                                let point = coords as! GeoPoint
-                                let coodinates = MyAnnotationItem(coordinates: CLLocationCoordinate2D(latitude: point.latitude, longitude: point.longitude))
-                                print(point.latitude)
-                                print(point.longitude)
-                                self.arrLoc.append(coodinates)
+    @Published var arrRestaurantCoordinates:[MyAnnotationItem] = []
+    
+     func getCoodinatesData() -> [MyAnnotationItem] {
+        print("hello")
+        if let getRest = userDefaults.object(forKey: TextConstant.SELECTDEDRES) as? String{
+            let docRef = firestoreInstace.collection(FirebaseCollection.CuisineList).document(getRest)
+                    docRef.collection(getRest).getDocuments() {(snapshot, error) in
+                        if let error = error{
+                            print("Error getting Documents: \(error)")
+                        }else{
+                            for doc in snapshot!.documents{
+                                if let coords = doc.get("coordinates"){
+                                    let point = coords as! GeoPoint
+                                    let coodinates = MyAnnotationItem(coordinates: .init(latitude: point.latitude, longitude: point.longitude))
+                                    self.arrRestaurantCoordinates.append(coodinates)
+                                }
                             }
+                            print(self.arrRestaurantCoordinates)
                         }
-                    }
+//                        userDefaults.setValue(nil, forKey: TextConstant.SELECTDEDRES)
                 }
-            }
-
+        }
+        return arrRestaurantCoordinates
+    }
 }
     
     
