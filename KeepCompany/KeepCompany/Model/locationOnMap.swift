@@ -22,7 +22,6 @@ class locationOnMap: ObservableObject {
      //fetch all documents data
     @Published var arrRestaurantCoordinates:[MyAnnotationItem] = []
     
-    
     init() {
         if let getRest = userDefaults.object(forKey: TextConstant.SELECTDEDRES) as? String{
             let docRef = firestoreInstace.collection(FirebaseCollection.CuisineList).document(getRest)
@@ -31,7 +30,7 @@ class locationOnMap: ObservableObject {
                             print("Error getting Documents: \(error)")
                         }else{
                             for doc in snapshot!.documents{
-                                if let coords = doc.get("coordinates"){
+                                if let coords = doc.get(FirebaseCollection.Coordinates){
                                     let point = coords as! GeoPoint
                                     let coodinates = MyAnnotationItem(coordinates: .init(latitude: point.latitude, longitude: point.longitude))
                                     self.arrRestaurantCoordinates.append(coodinates)
@@ -39,8 +38,8 @@ class locationOnMap: ObservableObject {
                             }
                             print(self.arrRestaurantCoordinates)
                         }
-                }
-        }
+                    }
+           }
     }
     
 }

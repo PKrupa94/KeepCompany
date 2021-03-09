@@ -13,11 +13,13 @@ struct LoginView: View {
     @State private var password:String = ""
     @State private var isEmailValid:Bool = true
     @State private var showAlert = false
-    @State var selection: Int? = nil
+//    @State var selection: Int? = nil
+    @State private var isLoginSuccess: Bool = false
+
 
     
     var body: some View {
-        NavigationView{
+//        NavigationView{
         ZStack(alignment: .bottom) {
             VStack{
                 HStack{
@@ -25,12 +27,12 @@ struct LoginView: View {
                     VStack(spacing: 50){
                     }
                 }
-                .padding(.top, 150)// for top curve...
+                .padding(.top, 100)// for top curve...
                 //EMAIL
                 VStack{
                     HStack(spacing: 15){
-                        Image(systemName: "envelope.fill")
-                        .foregroundColor(Color("Color1"))
+                        Image(systemName:ImageConstant.img_email)
+                        .foregroundColor(ColorConstant.App_Color)
                         TextField(TextConstant.EMAIL, text: self.$email)
                     }
                     
@@ -41,8 +43,8 @@ struct LoginView: View {
                 //Paasword
                 VStack{
                     HStack(spacing: 15){
-                        Image(systemName:"eye.slash.fill")
-                        .foregroundColor(Color("Color1"))
+                        Image(systemName:ImageConstant.img_password)
+                        .foregroundColor(ColorConstant.App_Color)
                         SecureField(TextConstant.PASSWORD, text: self.$password)
                     }
                     Divider().background(Color.white.opacity(0.5))
@@ -50,7 +52,9 @@ struct LoginView: View {
                 .padding(.horizontal)
                 .padding(.bottom, 30)
                // Button1
-                NavigationLink(destination: FoodChoiceList(), tag: 1, selection: self.$selection){
+               // NavigationLink(destination: FoodChoiceList(), tag: 1, selection: self.$selection){
+                NavigationLink(destination:FoodChoiceList(), isActive: $isLoginSuccess,
+                                 label: { EmptyView() })
                     Button(action: {
                         logIn()
                     }, label: {
@@ -62,17 +66,18 @@ struct LoginView: View {
                             .foregroundColor(Color.white)
                             .cornerRadius(10)
                     })
-                }
+               // }
                 .alert(isPresented: self.$showAlert) {
                     Alert(title:Text(AlertMessage.ERROR), message: Text(AlertMessage.LOGIN_ERROR), dismissButton: .cancel())
                 }
             }
-           .navigationTitle("").navigationBarHidden(true)
+            .navigationTitle("").navigationBarHidden(false)
             .padding(.horizontal)
             .padding(.bottom, 45)
+          //  .background(Color("Color").edgesIgnoringSafeArea(.all))
         }
   
-    }
+    //}
 //        NavigationView{
 //            VStack{
 //                TextField(TextConstant.EMAIL, text: $email)
@@ -112,7 +117,7 @@ struct LoginView: View {
         if (Helper.textFieldValidatorEmail(self.email) && self.password != "") {
             FirebaseAuthManager().signIn(email: self.email, password: self.password) { (success) in
                 if success{
-                    self.selection = 1
+                    self.isLoginSuccess = true
                     print("success")
                 }else{
                     self.showAlert = true

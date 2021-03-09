@@ -12,11 +12,13 @@ struct ContentView: View {
     @State var isLogin = userDefaults.object(forKey: TextConstant.IS_LOGIN) as? Bool ?? false
     var body: some View {
         if isLogin{
-            FoodChoiceList()
-
+            NavigationView{
+                FoodChoiceList()
+            }
         }else{
-            LoginView()        
-
+            NavigationView{
+                SignUpView()
+            }
         }
     }
 }

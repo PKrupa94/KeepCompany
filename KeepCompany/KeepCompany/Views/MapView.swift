@@ -33,6 +33,7 @@ struct MapView: View {
         Map(coordinateRegion: $region, annotationItems: arrCoodinates.arrRestaurantCoordinates) { restaurant in
             MapMarker(coordinate: restaurant.coordinates)}
     }
+    
 }
 
 struct MapView_Previews: PreviewProvider {
@@ -40,4 +41,5 @@ struct MapView_Previews: PreviewProvider {
         ContentView()
     }
 }
+
 
