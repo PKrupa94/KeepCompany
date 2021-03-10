@@ -12,45 +12,33 @@ struct FoodChoiceList: View {
     @State private var showingAlert = false
     @State var selection: Int? = nil
     @State private var clickedItem = ""
-    @ObservedObject var cuisineModel = CuisineModel()
     @State private var isUserConfirm: Bool = false
-
-
+    @State var arrCuisine:[String] = []
+    
     var body: some View {
-       //NavigationView{
-            List(cuisineModel.arrCuisine,id:\.self){ name in
-                NavigationLink(destination: MapView(selectedOption:name)){
-                    Text(name).font(.subheadline).foregroundColor(.black)
-                }
-               
-//                Button(action: {
-//                    userDefaults.setValue(name, forKey: TextConstant.SELECTDEDRES)
-//                     self.showingAlert = true
-//                }) {Text("")}          }
-//            .alert(isPresented:self.$showingAlert, content: {
-//                Alert(title:Text("Confirm Dialog"), message: Text(AlertMessage.CONFIRM), primaryButton: Alert.Button.default(Text(AlertMessage.BTNCONFIRM)){
-//                    self.isUserConfirm = true
-//                    if let userId = userDefaults.object(forKey: TextConstant.USERID) as? String{
-//                        var name:String = "Test"
-//                        if let userName = userDefaults.object(forKey: TextConstant.USERNAME) as? String{
-//                            name = userName
-//                        }
-//                        firestoreInstace.collection(FirebaseCollection.userIntrest).document(userId).setData(["name":name]) { (error) in
-//                            if let err = error{
-//                                print(err)
-//                            }else{
-//
-//                            }
-//                        }
-//                    }
-//                }, secondaryButton: .cancel())
-//           })
-
+        List(arrCuisine,id:\.self){ name in
+            NavigationLink(destination: MapView(selectedOption:name)){
+                Text(name).font(.subheadline).foregroundColor(.black)
+            }
             .navigationTitle(NavigationTitle.CATEGORIES).navigationBarBackButtonHidden(true)
             .navigationBarTitleDisplayMode(.inline)
+        }.onAppear(){
+            getCuisineData()
+        }.onDisappear(){
+            arrCuisine.removeAll()
+        }
+    }
     
-          //}
+    func getCuisineData(){
+        firestoreInstace.collection(FirebaseCollection.CuisineList).getDocuments() { [self] (snapshot, error) in
+            if let err = error{
+                print(err)
+            }else{
+                for doc in snapshot!.documents{
+                    arrCuisine.append(doc.documentID)
+                }
             }
+        }
     }
 }
 

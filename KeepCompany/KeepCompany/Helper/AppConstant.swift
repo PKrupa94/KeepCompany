@@ -8,6 +8,7 @@
 import Foundation
 import SwiftUI
 import FirebaseFirestore
+import CoreLocation
 
 
 let firestoreInstace = Firestore.firestore()
@@ -67,6 +68,11 @@ struct NavigationTitle {
     static let CATEGORIES = "Categories"
     static let Register = "Register Now"
     static let LOGIN = "Login"
+}
+
+struct MyAnnotationItem:Identifiable{
+    let id = UUID()
+    var coordinates:CLLocationCoordinate2D
 }
 
 
