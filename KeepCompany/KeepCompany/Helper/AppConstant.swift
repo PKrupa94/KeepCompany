@@ -24,7 +24,13 @@ struct FirebaseCollection{
     static let Mexican = "Mexican"
     static let Users = "Users"
     static let Coordinates = "coordinates"
-    
+    static let InterestedUserCount = "InterestedUserCount"
+    static let RestName = "Name"
+    static let UserInterest = "Intrest"
+    static let Messages = "Messages"
+    static let RecentMsg = "RecentMsg"
+
+
 }
 
 struct ColorConstant{
@@ -41,12 +47,18 @@ struct TextConstant {
     static let LOGIN = "LOGIN"
     static let SIGNUP = "SIGN UP"
     static let USERNAME = "Username"
+    static let ProfilePic = "ProfilePic"
     static let USERID = "userID"
     static let SELECTDEDRES = "selectedRestaurant"
     static let IS_LOGIN = "status"
     static let CITY = "City"
     static let AGE = "Age"
     static let GENDER = "Gender"
+    static let LASTMSG = "LastMsg"
+    static let MSGDATE = "MsgDate"
+    static let Msg = "Message"
+
+    
 }
 
 struct ImageConstant{
@@ -73,8 +85,14 @@ struct NavigationTitle {
 struct MyAnnotationItem:Identifiable{
     let id = UUID()
     var coordinates:CLLocationCoordinate2D
+    var rest_id:String
+    var interestedUserCount:Int
+    var restName:String
 }
 
-
-
+struct Msg : Identifiable {
+    var id : String
+    var msg : String
+    var user : String
+}
 

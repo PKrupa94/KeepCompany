@@ -25,6 +25,11 @@
 		FFDF802625F05A5F00299892 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFDF802525F05A5F00299892 /* MapView.swift */; };
 		FFDF80AB25F19E3500299892 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFDF80AA25F19E3500299892 /* LoginView.swift */; };
 		FFDF80BC25F1D16A00299892 /* FirebaseAuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFDF80BB25F1D16A00299892 /* FirebaseAuthManager.swift */; };
+		FFFC27FA2637960E00214891 /* InterestedUsersListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFFC27F92637960E00214891 /* InterestedUsersListView.swift */; };
+		FFFC27FC2637961B00214891 /* UserListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFFC27FB2637961B00214891 /* UserListModel.swift */; };
+		FFFC27FE2637963700214891 /* ChatDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFFC27FD2637963700214891 /* ChatDataModel.swift */; };
+		FFFC28002637963F00214891 /* ChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFFC27FF2637963F00214891 /* ChatView.swift */; };
+		FFFC2802263797F000214891 /* UserCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFFC2801263797F000214891 /* UserCellView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -75,6 +80,11 @@
 		FFDF802525F05A5F00299892 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 		FFDF80AA25F19E3500299892 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		FFDF80BB25F1D16A00299892 /* FirebaseAuthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseAuthManager.swift; sourceTree = "<group>"; };
+		FFFC27F92637960E00214891 /* InterestedUsersListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InterestedUsersListView.swift; sourceTree = "<group>"; };
+		FFFC27FB2637961B00214891 /* UserListModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserListModel.swift; sourceTree = "<group>"; };
+		FFFC27FD2637963700214891 /* ChatDataModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatDataModel.swift; sourceTree = "<group>"; };
+		FFFC27FF2637963F00214891 /* ChatView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatView.swift; sourceTree = "<group>"; };
+		FFFC2801263797F000214891 /* UserCellView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserCellView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -203,6 +213,9 @@
 		FFDF7FF125F033E000299892 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				FFFC2801263797F000214891 /* UserCellView.swift */,
+				FFFC27FF2637963F00214891 /* ChatView.swift */,
+				FFFC27F92637960E00214891 /* InterestedUsersListView.swift */,
 				FFDF7F9A25F030A800299892 /* ContentView.swift */,
 				FFDF800825F036BA00299892 /* FoodChoiceList.swift */,
 				FFDF802525F05A5F00299892 /* MapView.swift */,
@@ -215,6 +228,8 @@
 		FFDF802B25F07E6000299892 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				FFFC27FD2637963700214891 /* ChatDataModel.swift */,
+				FFFC27FB2637961B00214891 /* UserListModel.swift */,
 				FFA5872D25F6F82F00871A7D /* ImagePicker.swift */,
 				FFDF80BB25F1D16A00299892 /* FirebaseAuthManager.swift */,
 			);
@@ -460,14 +475,19 @@
 			buildActionMask = 2147483647;
 			files = (
 				FFDF802625F05A5F00299892 /* MapView.swift in Sources */,
+				FFFC27FA2637960E00214891 /* InterestedUsersListView.swift in Sources */,
+				FFFC27FE2637963700214891 /* ChatDataModel.swift in Sources */,
 				FFA5872E25F6F82F00871A7D /* ImagePicker.swift in Sources */,
+				FFFC28002637963F00214891 /* ChatView.swift in Sources */,
 				FFDF7F9B25F030A800299892 /* ContentView.swift in Sources */,
 				FFDF801925F0424C00299892 /* AppConstant.swift in Sources */,
 				FFA5876B25F7EA4200871A7D /* SignUpView.swift in Sources */,
+				FFFC27FC2637961B00214891 /* UserListModel.swift in Sources */,
 				FFDF800925F036BA00299892 /* FoodChoiceList.swift in Sources */,
 				FFDF7F9925F030A800299892 /* KeepCompanyApp.swift in Sources */,
 				FFDF80BC25F1D16A00299892 /* FirebaseAuthManager.swift in Sources */,
 				FFDF80AB25F19E3500299892 /* LoginView.swift in Sources */,
+				FFFC2802263797F000214891 /* UserCellView.swift in Sources */,
 				FFDF802125F0556100299892 /* Helper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
