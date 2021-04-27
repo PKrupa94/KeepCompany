@@ -11,6 +11,7 @@ pod 'Firebase/Database'
 pod 'Firebase'
 pod 'Firebase/Firestore'
 pod 'FirebaseFirestore', :git => 'https://github.com/firebase/firebase-ios-sdk.git', :branch => 'master'
+pod 'SDWebImageSwiftUI'
 
   target 'KeepCompanyTests' do
     inherit! :search_paths
