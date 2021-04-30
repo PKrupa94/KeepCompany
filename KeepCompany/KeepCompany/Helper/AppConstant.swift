@@ -28,6 +28,7 @@ struct FirebaseCollection{
     static let UserInterest = "Intrest"
     static let Messages = "Messages"
     static let RecentMsg = "RecentMsg"
+    static let UsersProfilePic = "UsersProfilePic"
 
 
 }

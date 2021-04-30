@@ -23,9 +23,6 @@ class getAllUsers : ObservableObject{
     @Published var empty = false
     
     init() {
-//        let selectedPlace = userDefaults.object(forKey: "place") as! String
-//        let Category = userDefaults.object(forKey: "Category") as! String
-
         let docRef = firestoreInstace.collection(FirebaseCollection.UserInterest).document(UserPreRest.selectedCategory)
         docRef.collection(UserPreRest.selectedRest).getDocuments { (snap, err) in
             if err != nil{
@@ -42,11 +39,15 @@ class getAllUsers : ObservableObject{
                 firestoreInstace.collection(FirebaseCollection.Users).document(user_id).getDocument { (snap, error) in
                     if let userData = snap?.data(){
                         print(userData)
-                        guard let name = userData[TextConstant.USERNAME] as? String else {return}
-                        guard let pic = userData[TextConstant.ProfilePic] as? String else {return}
-                        guard let age = userData[TextConstant.AGE] as? String else {return}
+                        
+                        let name = userData[TextConstant.USERNAME] as? String
+                        let age = userData[TextConstant.AGE] as? String
+                        var profilePic  = ""
+                        if let pic = userData[TextConstant.ProfilePic] as? String {
+                            profilePic = pic
+                        }
                         if user_id != userDefaults.value(forKey: TextConstant.USERID) as! String{
-                            self.users.append(User(id: user_id, name: name, pic: pic, age: age))
+                            self.users.append(User(id: user_id, name: name!, pic: profilePic, age: age!))
                         }
                     }
                 }

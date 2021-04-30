@@ -24,7 +24,6 @@ struct MapView: View {
     @State var uid = ""
     @State var name = ""
     @State var pic = ""
-//    @State var selectedPlace:String
 
     @State var rest_id:String
 
@@ -39,17 +38,11 @@ struct MapView: View {
                 Text("")
             }
             Map(coordinateRegion: $region, annotationItems: arrRestaurantCoordinates) { restaurant in
-                //MapMarker(coordinate: restaurant.coordinates)
                 MapAnnotation(coordinate: restaurant.coordinates,anchorPoint: CGPoint(x: 0.5, y: 0.7)) {
                     VStack{
                         Button(action:{
                             UserPreRest.selectedCategory = selectedCategory
                             UserPreRest.selectedRest = restaurant.restName
-
-
-//                            selectedPlace = restaurant.restName
-//                            userDefaults.setValue(selectedOption, forKey: "Category")
-//                            userDefaults.setValue(selectedPlace, forKey: "place")
                             showSheet.toggle()
                         }){
                             Text("\(restaurant.interestedUserCount)").bold().foregroundColor(.black)
@@ -78,13 +71,13 @@ struct MapView: View {
             Alert(title: Text("Confirm"), message: Text("Would you like to visit \(UserPreRest.selectedRest)"), primaryButton:Alert.Button.default(Text("Confirm"), action: {
                 let uid = Auth.auth().currentUser?.uid
                 
+                //setData to userinterest
                 firestoreInstace.collection(FirebaseCollection.UserInterest).document(selectedCategory).collection(UserPreRest.selectedRest).document().setData([TextConstant.USERID:uid!]){ (err) in
-//                    userDefaults.setValue(selectedOption, forKey: "Category")
-//                    userDefaults.setValue(selectedPlace, forKey: "place")
                     if err != nil{
                         print((err?.localizedDescription)!)
                         return
                     }else{
+                        //fetch userinterest count from rest database
                         firestoreInstace.collection(FirebaseCollection.CuisineList).document(selectedCategory).collection(selectedCategory).document(rest_id).getDocument { snapshot, error in
                             if error != nil{
                                 print((err?.localizedDescription)!)
@@ -96,6 +89,7 @@ struct MapView: View {
                                 if let count = data[FirebaseCollection.InterestedUserCount] as? Int{
                                     print(count)
                                    let newCount = count + 1
+                                    //Update userinterest count
                                     firestoreInstace.collection(FirebaseCollection.CuisineList).document(selectedCategory).collection(selectedCategory).document(rest_id).updateData([FirebaseCollection.InterestedUserCount:newCount])
                                 }
                             }

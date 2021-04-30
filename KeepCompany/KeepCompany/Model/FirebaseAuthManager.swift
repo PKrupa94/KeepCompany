@@ -7,6 +7,9 @@
 
 import Foundation
 import FirebaseAuth
+import FirebaseStorage
+
+
 
 class FirebaseAuthManager{
     
@@ -27,27 +30,47 @@ class FirebaseAuthManager{
         }
     }
     
-    func userSignUp(email:String,password:String,username:String,age:String,gender:String,completionBlock: @escaping(_ success:Bool) -> Void){
+    func userSignUp(email:String,password:String,username:String,age:String,gender:String,userImageData:Data,completionBlock: @escaping(_ success:Bool) -> Void){
         Auth.auth().createUser(withEmail: email, password: password) { (result, error) in
             if(error == nil){
                 let userId = Auth.auth().currentUser?.uid
-                firestoreInstace.collection(FirebaseCollection.Users).document(userId!).setData(
-                    [TextConstant.EMAIL:email,TextConstant.AGE:age,TextConstant.GENDER:gender,TextConstant.USERNAME:username]){ error in
-                    if let error = error{
-                        print("Error adding document: \(error)")
-                        completionBlock(false)
+                let storage = Storage.storage().reference()
+                //Put imagedata on firebase
+                storage.child(FirebaseCollection.UsersProfilePic).child(userId!).putData(userImageData, metadata: nil){(_,error) in
+                    if error != nil{
+                        print((error?.localizedDescription)!)
                     }else{
-                        userDefaults.set(userId, forKey: TextConstant.USERID)
-                        userDefaults.set(username,forKey: TextConstant.USERNAME)
-                        userDefaults.set(email,forKey: TextConstant.EMAIL)
-                        userDefaults.set(age,forKey: TextConstant.AGE)
-                        userDefaults.set(true,forKey: TextConstant.IS_LOGIN)
-                        completionBlock(true)
+                        //fetch user profile url from FB
+                        storage.child(FirebaseCollection.UsersProfilePic).child(userId!).downloadURL { (url, err) in
+                            if err != nil{
+                                print((err?.localizedDescription)!)
+                            }
+                            
+                            var strImageUrl = ""
+                            if let getUrl =  url{
+                                strImageUrl = "\(getUrl)"
+                            }
+                            
+                            //Store userdata to FB
+                            firestoreInstace.collection(FirebaseCollection.Users).document(userId!).setData(
+                                [TextConstant.EMAIL:email,TextConstant.AGE:age,TextConstant.GENDER:gender,TextConstant.USERNAME:username,TextConstant.ProfilePic:strImageUrl]){ error in
+                                if let error = error{
+                                    print("Error adding document: \(error)")
+                                    completionBlock(false)
+                                }else{
+                                    userDefaults.set(userId, forKey: TextConstant.USERID)
+                                    userDefaults.set(username,forKey: TextConstant.USERNAME)
+                                    userDefaults.set(email,forKey: TextConstant.EMAIL)
+                                    userDefaults.set(age,forKey: TextConstant.AGE)
+                                    userDefaults.set(strImageUrl,forKey: TextConstant.ProfilePic)
+                                    userDefaults.set(true,forKey: TextConstant.IS_LOGIN)
+                                    completionBlock(true)
+                                }
+                            }
+                        }
                     }
                 }
             }
         }
-        
     }
-    
 }
