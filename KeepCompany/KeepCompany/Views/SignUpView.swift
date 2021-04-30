@@ -20,22 +20,23 @@ struct SignUP : View {
     
     @State var email = ""
     @State var password = ""
-    @State var age = ""
     @State var name = ""
     @State var imagedata : Data = .init(count: 0)
     @State var selectedGender = 0
-    @State private var date = Date()
+    @State private var birthDate = Date()
     @State private var showAlert = false
     @State private var isLoginClicked: Bool = false
     @State private var isSignUpSuccess: Bool = false
     @State private var isFalseInfo: Bool = false
     @State private var showingImagePicker = false
     let genders = ["Male", "Female"]
+    let calendar = Calendar.current
+    let currentDate = Date()
 
     
     let dateRange: ClosedRange<Date> = {
         let calendar = Calendar.current
-        let startComponents = DateComponents(year: 2021, month: 1, day: 1)
+        let startComponents = DateComponents(year: 1970, month: 1, day: 1)
         let endComponents = DateComponents(year: 2021, month: 12, day: 31, hour: 23, minute: 59, second: 59)
         return calendar.date(from:startComponents)!
             ...
@@ -122,7 +123,7 @@ struct SignUP : View {
                 //AGE
                 DatePicker(
                     "BIRTHDATE",
-                    selection: $date,
+                    selection: $birthDate,
                     in: dateRange,
                     displayedComponents: [.date]
                 ).foregroundColor(.pink)
@@ -130,6 +131,7 @@ struct SignUP : View {
                 .padding(.horizontal)
                 .padding(.bottom, 30)
                 .accentColor(.pink)
+                
                 
                 //GENDER
                 VStack{
@@ -190,8 +192,10 @@ struct SignUP : View {
         }
         
     func SignUp(){
-        if (Helper.textFieldValidatorEmail(self.email) && self.password != "" && self.name != "" && self.age != "") {
-            FirebaseAuthManager().userSignUp(email: self.email, password: self.password, username: self.name, age: self.age, gender: self.genders[selectedGender],userImageData: self.imagedata) { (success) in
+        let ageComponents = calendar.dateComponents([.year], from: birthDate, to: currentDate)
+        let age = String(ageComponents.year!)
+        if (Helper.textFieldValidatorEmail(self.email) && self.password != "" && self.name != "" && age != "") {
+            FirebaseAuthManager().userSignUp(email: self.email, password: self.password, username: self.name, age:age, gender: self.genders[selectedGender],userImageData: self.imagedata) { (success) in
                 if success{
                     self.isSignUpSuccess = true
                 }else{
