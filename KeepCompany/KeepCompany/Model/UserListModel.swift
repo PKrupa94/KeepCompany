@@ -16,17 +16,18 @@ struct User : Identifiable {
     var age : String
 }
 
+
 class getAllUsers : ObservableObject{
     
     @Published var users = [User]()
     @Published var empty = false
     
     init() {
-        let selectedPlace = userDefaults.object(forKey: "place") as! String
-        let Category = userDefaults.object(forKey: "Category") as! String
+//        let selectedPlace = userDefaults.object(forKey: "place") as! String
+//        let Category = userDefaults.object(forKey: "Category") as! String
 
-        let docRef = firestoreInstace.collection(FirebaseCollection.userIntrest).document(Category)
-        docRef.collection(selectedPlace).getDocuments { (snap, err) in
+        let docRef = firestoreInstace.collection(FirebaseCollection.UserInterest).document(UserPreRest.selectedCategory)
+        docRef.collection(UserPreRest.selectedRest).getDocuments { (snap, err) in
             if err != nil{
                 print((err?.localizedDescription)!)
                 self.empty = true
@@ -44,7 +45,6 @@ class getAllUsers : ObservableObject{
                         guard let name = userData[TextConstant.USERNAME] as? String else {return}
                         guard let pic = userData[TextConstant.ProfilePic] as? String else {return}
                         guard let age = userData[TextConstant.AGE] as? String else {return}
-//                        guard let user_id = userData["uid"] as? String else {return}
                         if user_id != userDefaults.value(forKey: TextConstant.USERID) as! String{
                             self.users.append(User(id: user_id, name: name, pic: pic, age: age))
                         }

@@ -17,7 +17,6 @@ var foodSelect = ""
 
 struct FirebaseCollection{
     static let CuisineList = "CuisineList"
-    static let userIntrest = "UserIntrest"
     static let American = "American"
     static let Indian = "Indian"
     static let Italian = "Italian"

@@ -43,6 +43,8 @@ struct SignUP : View {
                     }
                 }
                 .padding(.top, 100)// for top curve...
+                
+                
                 //NAME
                 VStack{
                     HStack(spacing: 15){
