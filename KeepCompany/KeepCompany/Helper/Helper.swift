@@ -19,6 +19,8 @@ class Helper:NSObject{
         let emailPredicate = NSPredicate(format:"SELF MATCHES %@", emailFormat)
         return emailPredicate.evaluate(with: string)
     }
+    
+    
 }
 
 struct ChatBubble : Shape {

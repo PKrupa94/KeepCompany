@@ -13,7 +13,7 @@ struct InterestedUsersListView: View {
     @Binding var pic : String
     @Binding var show : Bool
     @Binding var chat : Bool
-    @Binding var selectedPref:String
+//    @Binding var selectedPref:String
     @ObservedObject var datas = getAllUsers()
    
     

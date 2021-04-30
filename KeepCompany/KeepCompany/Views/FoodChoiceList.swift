@@ -17,7 +17,7 @@ struct FoodChoiceList: View {
     
     var body: some View {
         List(arrCuisine,id:\.self){ name in
-            NavigationLink(destination: MapView(selectedOption:name, selectedPlace: "", rest_id: "")){
+            NavigationLink(destination: MapView(selectedCategory:name, rest_id: "")){
                 Text(name).font(.subheadline).foregroundColor(.black)
             }
             .navigationTitle(NavigationTitle.CATEGORIES).navigationBarBackButtonHidden(true)
