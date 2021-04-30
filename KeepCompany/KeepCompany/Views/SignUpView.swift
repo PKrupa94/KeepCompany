@@ -30,8 +30,6 @@ struct SignUP : View {
     @State private var isFalseInfo: Bool = false
     @State private var showingImagePicker = false
     let genders = ["Male", "Female"]
-    let calendar = Calendar.current
-    let currentDate = Date()
 
     
     let dateRange: ClosedRange<Date> = {
@@ -132,7 +130,6 @@ struct SignUP : View {
                 .padding(.bottom, 30)
                 .accentColor(.pink)
                 
-                
                 //GENDER
                 VStack{
                     HStack(spacing: 15) {
@@ -192,7 +189,8 @@ struct SignUP : View {
         }
         
     func SignUp(){
-        let ageComponents = calendar.dateComponents([.year], from: birthDate, to: currentDate)
+        //convert selected birthdate to age
+        let ageComponents = Calendar.current.dateComponents([.year], from: birthDate, to: Date())
         let age = String(ageComponents.year!)
         if (Helper.textFieldValidatorEmail(self.email) && self.password != "" && self.name != "" && age != "") {
             FirebaseAuthManager().userSignUp(email: self.email, password: self.password, username: self.name, age:age, gender: self.genders[selectedGender],userImageData: self.imagedata) { (success) in
