@@ -1,11 +1,5 @@
-//
-//  SignUpView.swift
-//  KeepCompany
-//
-//  Created by krupa on 3/9/21.
-//
-
 import SwiftUI
+import Firebase
 
 struct SignUpView: View {
     @State var index = 0
@@ -14,11 +8,14 @@ struct SignUpView: View {
     }
 }
 
+
+
 struct SignUpView_Previews: PreviewProvider {
     static var previews: some View {
         SignUpView()
     }
 }
+
 
 struct SignUP : View {
     
@@ -31,19 +28,104 @@ struct SignUP : View {
     @State private var isLoginClicked: Bool = false
     @State private var isSignUpSuccess: Bool = false
     @State private var isFalseInfo: Bool = false
-
-
+    @State var picker = false
+    @State var loading = false
+    @State var imagedata : Data = .init(count: 0)
+    @State var alert = false
+    @State private var showingImagePicker = false
+    @State var image: Image? = nil
+    @State var upload_image:UIImage?
+    @State var shown = false
+    @State var selectedGender = 0
+    @State private var date = Date()
+    
+    let dateRange: ClosedRange<Date> = {
+        let calendar = Calendar.current
+        let startComponents = DateComponents(year: 2021, month: 1, day: 1)
+        let endComponents = DateComponents(year: 2021, month: 12, day: 31, hour: 23, minute: 59, second: 59)
+        return calendar.date(from:startComponents)!
+            ...
+            calendar.date(from:endComponents)!
+    }()
+    
+    let genders = ["Male", "Female"]
+    
     var body: some View{
+        
+        
+        
+        
         
         ZStack(alignment: .bottom) {
             VStack{
+                
                 HStack{
-                    Spacer(minLength: 0)
-                    VStack(spacing: 50){
+                    
+                    
+                    //ImagePicker
+                    VStack {
+                        
+                        
+                        if image == nil {
+                            
+                            
+                            Image(systemName: "person.fill")
+                                .resizable()
+                                .clipShape(Circle())
+                                .frame(width: 150, height: 150)
+                                .foregroundColor(Color.pink)
+                                .overlay(Circle().stroke(Color.pink,lineWidth: 4))
+                                .padding(.bottom)
+                        } else{
+                            image?.resizable()
+                                .clipShape(Circle())
+                                .frame(width:150, height:150)
+                                .foregroundColor(Color.gray)
+                                .overlay(Circle().stroke(Color.gray, lineWidth:4))
+                                .padding(.bottom)
+                        }
+                        
+                        //Button
+                        
+                        /*         Button(action: {
+                         
+                         self.picker.toggle()
+                         
+                         })
+                         {
+                         
+                         
+                         if self.imagedata.count == 0{
+                         
+                         
+                         Image(systemName: "person.crop.circle.badge.plus").resizable().frame(width:150, height:150 ).foregroundColor(.pink)
+                         
+                         
+                         }
+                         else{
+                         
+                         Image(uiImage: UIImage(data: self.imagedata)!).resizable()
+                         .renderingMode(.original)
+                         .frame(width: 150, height: 150).clipShape(Circle())
+                         }
+                         
+                         }
+                         */
+                        
+                        Button("Choose Profile Picture")
+                        {
+                            self.showingImagePicker.toggle()
+                        }.foregroundColor(.black)
+                        .sheet(isPresented: $showingImagePicker,
+                               content: {
+                                ImagePicker.shared.view
+                               }).onReceive(ImagePicker.shared.$image) {image in self.image = image
+                                
+                               }
+                        
                     }
                 }
-                .padding(.top, 100)// for top curve...
-                
+                .padding(.top, 15)// for top curve...
                 
                 //NAME
                 VStack{
@@ -82,29 +164,51 @@ struct SignUP : View {
                 .padding(.bottom, 30)
                 
                 //AGE
-                VStack{
-                    HStack(spacing: 15){
-                        Image(systemName:ImageConstant.img_age)
-                            .foregroundColor(ColorConstant.App_Color)
-                        TextField(TextConstant.AGE, text: self.$age).keyboardType(.numberPad)
-                    }
-                    Divider().background(Color.white.opacity(0.5))
-                }
+                DatePicker(
+                    "DOB",
+                    selection: $date,
+                    in: dateRange,
+                    displayedComponents: [.date]
+                ).foregroundColor(.pink)
+                .font(.system(size: 15, weight: .heavy, design: .default))
                 .padding(.horizontal)
                 .padding(.bottom, 30)
+                .accentColor(.pink)
+                
+                /*     VStack{
+                 HStack(spacing: 15){
+                 Image(systemName:ImageConstant.img_age)
+                 .foregroundColor(ColorConstant.App_Color)
+                 TextField(TextConstant.AGE, text: self.$age).keyboardType(.numberPad)
+                 }
+                 Divider().background(Color.white.opacity(0.5))
+                 }
+                 .padding(.horizontal)
+                 .padding(.bottom, 30)
+                 */
+                
                 
                 //GENDER
                 VStack{
-                    HStack(spacing: 15){
-                        Image(systemName:ImageConstant.img_gender )
-                            .foregroundColor(ColorConstant.App_Color)
-                        TextField(TextConstant.GENDER, text: self.$gender)
-                    }
-                    Divider().background(Color.white.opacity(0.5))
-                }
-                .padding(.horizontal)
-                .padding(.bottom, 30)
-                NavigationLink(destination:FoodChoiceList(), isActive: $isSignUpSuccess,label: { EmptyView() })
+                    
+                    HStack(spacing: 15) {
+                        Image(systemName: "person.fill.questionmark")
+                            .foregroundColor(Color.pink)
+                        Picker("", selection: $selectedGender) {
+                            
+                            ForEach(0..<genders.count) { index in
+                                Text(self.genders[index]).tag(index).font(.title)
+                            }
+                        }.pickerStyle(SegmentedPickerStyle())
+                        
+                    }.padding(.horizontal)
+                    .padding(.bottom, 30)
+                    .accentColor(.pink)
+                    
+                    
+                    
+                    
+                    
                     Button(action: {
                         SignUp()
                     }) {
@@ -118,15 +222,23 @@ struct SignUP : View {
                     .cornerRadius(10)
                     .padding(.horizontal)
                     .padding(.bottom, 10)
-               // }
-                .alert(isPresented: self.$showAlert) {
-                    Alert(title:Text(AlertMessage.ERROR), message: Text("Error while creating user.Please try again"), dismissButton: .cancel())
-                }
-                .alert(isPresented: self.$isFalseInfo) {
+                    // }
+                    
+                    .alert(isPresented: self.$showAlert) {
+                        Alert(title:Text(AlertMessage.ERROR), message: Text("Please Upload Profile Picture, If uploaded then plaese Continue"), dismissButton: .cancel())
+                    }
+                    
+                    .alert(isPresented: self.$showAlert) {
+                        Alert(title:Text(AlertMessage.ERROR), message: Text("Error while creating user.Please try again"), dismissButton: .cancel())
+                    }
+                    .alert(isPresented: self.$isFalseInfo) {
                         Alert(title:Text(AlertMessage.ERROR), message: Text("Please Enter valid details"), dismissButton: .cancel())
-                }
-                //// Button2
-                NavigationLink(destination:LoginView(), isActive: $isLoginClicked,label: { EmptyView() })
+                    }
+                    //// Button2
+                    NavigationLink(destination:LoginView(), isActive: $isLoginClicked,label: { EmptyView() })
+                    
+                    
+                    
                     Button(action: {
                         self.isLoginClicked = true
                     }) {
@@ -139,9 +251,15 @@ struct SignUP : View {
                     .cornerRadius(10)
                     .padding(.horizontal)
                     .padding(.bottom, 20)
+                    
+                    //zstack end
+                }
+                
             }
-            //zstack end
+            
+            
         }
+        
     }
     
     func SignUp(){
@@ -158,6 +276,5 @@ struct SignUP : View {
         }
     }
 }
-
 
 
