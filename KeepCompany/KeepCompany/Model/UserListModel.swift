@@ -46,6 +46,7 @@ class getAllUsers : ObservableObject{
                         if let pic = userData[TextConstant.ProfilePic] as? String {
                             profilePic = pic
                         }
+                        print(userDefaults.value(forKey: TextConstant.USERID) as! String)
                         if user_id != userDefaults.value(forKey: TextConstant.USERID) as! String{
                             self.users.append(User(id: user_id, name: name!, pic: profilePic, age: age!))
                         }

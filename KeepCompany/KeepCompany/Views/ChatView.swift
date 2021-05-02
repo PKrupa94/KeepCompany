@@ -38,10 +38,9 @@ struct ChatView: View {
                         HStack{
                             if i.user == userDefaults.value(forKey: TextConstant.USERID) as! String{
                                     Spacer()
-                                    
                                     Text(i.msg)
                                         .padding()
-                                        .background(Color.blue)
+                                        .background(ColorConstant.App_Color)
                                         .clipShape(ChatBubble(mymsg: true))
                                         .foregroundColor(.white)
                                 }
@@ -60,12 +59,20 @@ struct ChatView: View {
             
             HStack{
                 TextField("Enter Message", text: self.$txt).textFieldStyle(RoundedBorderTextFieldStyle())
+                     .font(Font.system(size: 15, weight: .medium, design: .default))
+                     .textFieldStyle(RoundedBorderTextFieldStyle())
+                     .overlay(RoundedRectangle(cornerRadius: 10).stroke(ColorConstant.App_Color, lineWidth: 1))
                 Button(action: {
+                    
                     sendMsg(user: self.name, uid: self.uid, pic: self.pic, date: Date(), msg: self.txt)
                     self.txt = ""
                 }) {
                     Text("Send")
-                }
+                        .frame(width: 70 , height: 35, alignment: .center)
+                }.background(ColorConstant.App_Color)
+                .foregroundColor(Color.white)
+                .cornerRadius(10)
+                .disabled(self.txt == "")
             }
             .navigationBarTitle("\(name)",displayMode: .inline)
             .navigationBarBackButtonHidden(true)
@@ -83,9 +90,7 @@ struct ChatView: View {
     
     func getMsgs(){
         let uid = Auth.auth().currentUser?.uid
-        
-        firestoreInstace.collection(FirebaseCollection.Messages).document(uid!).collection(self.uid).order(by: "date", descending: false).addSnapshotListener { (snap, err) in
-            
+        firestoreInstace.collection(FirebaseCollection.Messages).document(uid!).collection(self.uid).order(by: TextConstant.MSGDATE, descending: false).addSnapshotListener { (snap, err) in
             if err != nil{
                 print((err?.localizedDescription)!)
                 self.nomsgs = true

@@ -75,9 +75,7 @@ func updateDB(uid: String,msg: String,date: Date){
     }
     
     firestoreInstace.collection(FirebaseCollection.Messages).document(myuid!).collection(uid).document().setData([TextConstant.Msg:msg,TextConstant.USERID:myuid!,TextConstant.MSGDATE:date]) { (err) in
-        
         if err != nil{
-            
             print((err?.localizedDescription)!)
             return
         }

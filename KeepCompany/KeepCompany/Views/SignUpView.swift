@@ -48,7 +48,6 @@ struct SignUP : View {
         UISegmentedControl.appearance().selectedSegmentTintColor = UIColor(ColorConstant.App_Color)
         //and this changes the color for the whole "bar" background
         UISegmentedControl.appearance().backgroundColor = .white
-        
         //these lines change the text color for various states
         UISegmentedControl.appearance().setTitleTextAttributes([.foregroundColor : UIColor.white], for: .selected)
         UISegmentedControl.appearance().setTitleTextAttributes([.foregroundColor : UIColor.gray], for: .normal)

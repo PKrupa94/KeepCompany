@@ -20,7 +20,7 @@ struct InterestedUsersListView: View {
         VStack(alignment: .leading){
                 if self.datas.users.count == 0{
                     if self.datas.empty{
-                        Text("No Users Found")
+                        Text("No Users Found").font(.title2)
                     }
                 }
                 else{

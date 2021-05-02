@@ -70,7 +70,6 @@ struct MapView: View {
         }.alert(isPresented: self.$showAlert) {
             Alert(title: Text("Confirm"), message: Text("Would you like to visit \(UserPreRest.selectedRest)"), primaryButton:Alert.Button.default(Text("Confirm"), action: {
                 let uid = Auth.auth().currentUser?.uid
-                
                 //setData to userinterest
                 firestoreInstace.collection(FirebaseCollection.UserInterest).document(selectedCategory).collection(UserPreRest.selectedRest).document().setData([TextConstant.USERID:uid!]){ (err) in
                     if err != nil{
