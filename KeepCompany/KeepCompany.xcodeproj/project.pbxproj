@@ -12,6 +12,7 @@
 		8A5DF54DDEDF3D6B68303F07 /* Pods_KeepCompany.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CC300DDE65752A9B8F3EF509 /* Pods_KeepCompany.framework */; };
 		FFA5872E25F6F82F00871A7D /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFA5872D25F6F82F00871A7D /* ImagePicker.swift */; };
 		FFA5876B25F7EA4200871A7D /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFA5876A25F7EA4200871A7D /* SignUpView.swift */; };
+		FFD2E673263E0AFF007FF59B /* Indicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFD2E672263E0AFF007FF59B /* Indicator.swift */; };
 		FFDF7F9925F030A800299892 /* KeepCompanyApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFDF7F9825F030A800299892 /* KeepCompanyApp.swift */; };
 		FFDF7F9B25F030A800299892 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFDF7F9A25F030A800299892 /* ContentView.swift */; };
 		FFDF7F9D25F030A900299892 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FFDF7F9C25F030A900299892 /* Assets.xcassets */; };
@@ -61,6 +62,7 @@
 		F48A807744034577FAD7F6CA /* Pods-KeepCompany.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KeepCompany.debug.xcconfig"; path = "Target Support Files/Pods-KeepCompany/Pods-KeepCompany.debug.xcconfig"; sourceTree = "<group>"; };
 		FFA5872D25F6F82F00871A7D /* ImagePicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		FFA5876A25F7EA4200871A7D /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
+		FFD2E672263E0AFF007FF59B /* Indicator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Indicator.swift; sourceTree = "<group>"; };
 		FFDF7F9525F030A800299892 /* KeepCompany.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KeepCompany.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FFDF7F9825F030A800299892 /* KeepCompanyApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeepCompanyApp.swift; sourceTree = "<group>"; };
 		FFDF7F9A25F030A800299892 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -213,6 +215,7 @@
 		FFDF7FF125F033E000299892 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				FFD2E672263E0AFF007FF59B /* Indicator.swift */,
 				FFFC2801263797F000214891 /* UserCellView.swift */,
 				FFFC27FF2637963F00214891 /* ChatView.swift */,
 				FFFC27F92637960E00214891 /* InterestedUsersListView.swift */,
@@ -481,6 +484,7 @@
 				FFFC28002637963F00214891 /* ChatView.swift in Sources */,
 				FFDF7F9B25F030A800299892 /* ContentView.swift in Sources */,
 				FFDF801925F0424C00299892 /* AppConstant.swift in Sources */,
+				FFD2E673263E0AFF007FF59B /* Indicator.swift in Sources */,
 				FFA5876B25F7EA4200871A7D /* SignUpView.swift in Sources */,
 				FFFC27FC2637961B00214891 /* UserListModel.swift in Sources */,
 				FFDF800925F036BA00299892 /* FoodChoiceList.swift in Sources */,

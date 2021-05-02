@@ -16,7 +16,8 @@ struct UserCellView : View {
         
         HStack{
             if url != ""{
-                AnimatedImage(url: URL(string: url)).resizable().renderingMode(.original).frame(width: 50, height: 50).clipShape(Circle())
+                AnimatedImage(url: URL(string: url)).resizable().renderingMode(.original).frame(width: 50, height: 50)
+                    .clipShape(Circle())
             }else{
                 Image(systemName: "person.fill")
                     .resizable()

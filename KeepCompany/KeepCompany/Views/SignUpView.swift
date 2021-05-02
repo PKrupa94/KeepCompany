@@ -29,13 +29,16 @@ struct SignUP : View {
     @State private var isSignUpSuccess: Bool = false
     @State private var isFalseInfo: Bool = false
     @State private var showingImagePicker = false
+    @State private var shouldAnimate = false
+    
+    
     let genders = ["Male", "Female"]
-
+    
     
     let dateRange: ClosedRange<Date> = {
         let calendar = Calendar.current
         let startComponents = DateComponents(year: 1970, month: 1, day: 1)
-        let endComponents = DateComponents(year: 2021, month: 12, day: 31, hour: 23, minute: 59, second: 59)
+        let endComponents = DateComponents(year: Calendar.current.component(.year, from: Date()), month: Calendar.current.component(.month, from: Date()), day: calendar.component(.day, from: Date()) )
         return calendar.date(from:startComponents)!
             ...
             calendar.date(from:endComponents)!
@@ -45,7 +48,7 @@ struct SignUP : View {
         UISegmentedControl.appearance().selectedSegmentTintColor = UIColor(ColorConstant.App_Color)
         //and this changes the color for the whole "bar" background
         UISegmentedControl.appearance().backgroundColor = .white
-
+        
         //these lines change the text color for various states
         UISegmentedControl.appearance().setTitleTextAttributes([.foregroundColor : UIColor.white], for: .selected)
         UISegmentedControl.appearance().setTitleTextAttributes([.foregroundColor : UIColor.gray], for: .normal)
@@ -53,11 +56,20 @@ struct SignUP : View {
     
     
     var body: some View{
-        
         ZStack(alignment: .bottom) {
+            //show indiacator
+            GeometryReader {geometry in
+                VStack(alignment: .center){
+                    LoaderView(tintColor: ColorConstant.App_Color, scaleSize: 4.0)
+                        .edgesIgnoringSafeArea(.all)
+                        .hidden(shouldAnimate == false)
+                }.hidden(shouldAnimate == false).frame(width: geometry.size.width, height: geometry.size.height, alignment: .center)
+            }
+            
             VStack{
                 HStack{
                     //ImagePicker
+                    
                     Button(action: {
                         self.showingImagePicker.toggle()
                     }) {
@@ -73,7 +85,7 @@ struct SignUP : View {
                         else{
                             Image(uiImage: UIImage(data: self.imagedata)!).resizable().renderingMode(.original)
                                 .clipShape(Circle())
-                                .frame(width:150, height:150)
+                                .frame(width:120, height:120)
                                 .foregroundColor(Color.gray)
                                 .overlay(Circle().stroke(Color.gray, lineWidth:4))
                                 .padding(.bottom)
@@ -130,6 +142,7 @@ struct SignUP : View {
                 .padding(.bottom, 30)
                 .accentColor(.pink)
                 
+                
                 //GENDER
                 VStack{
                     HStack(spacing: 15) {
@@ -145,58 +158,66 @@ struct SignUP : View {
                     .padding(.bottom, 30)
                     .accentColor(.pink)
                 }
-                    Button(action: {
-                        SignUp()
-                    }) {
-                        Text(TextConstant.SIGNUP)
-                            .multilineTextAlignment(.center)
-                            .frame(height: 27.0)
-                            .frame(width: 200 , height: 50, alignment: .center)
-                    }
-                    .background(ColorConstant.App_Color)
-                    .foregroundColor(Color.white)
-                    .cornerRadius(10)
-                    .padding(.horizontal)
-                    .padding(.bottom, 10)
-               
-                    .alert(isPresented: self.$showAlert) {
-                        Alert(title:Text(AlertMessage.ERROR), message: Text("Error while creating user.Please try again"), dismissButton: .cancel())
-                    }
-                    .alert(isPresented: self.$isFalseInfo) {
-                        Alert(title:Text(AlertMessage.ERROR), message: Text("You need to fill up all the details along with your profile picture"), dismissButton: .cancel())
-                    }
-                    //// Button2
-                    NavigationLink(destination:LoginView(), isActive: $isLoginClicked,label: { EmptyView() })
-                    
-                    Button(action: {
-                        self.isLoginClicked = true
-                    }) {
-                        Text("Already have an account? SIGN IN!")
-                            .multilineTextAlignment(.center)
-                            .frame(height: 27.0)
-                            .frame(width: 350 , height: 50, alignment: .center)
-                    }
-                    .foregroundColor(Color.black)
-                    .cornerRadius(10)
-                    .padding(.horizontal)
-                    .padding(.bottom, 20)
-                }
                 
-            }.sheet(isPresented: self.$showingImagePicker, content: {
-                ImagePicker(picker: self.$showingImagePicker, imagedata: self.$imagedata)
-            })
+                
+                Button(action: {
+                    SignUp()
+                }) {
+                    Text(TextConstant.SIGNUP)
+                        .multilineTextAlignment(.center)
+                        .frame(height: 27.0)
+                        .frame(width: 200 , height: 50, alignment: .center)
+                }
+                .background(ColorConstant.App_Color)
+                .foregroundColor(Color.white)
+                .cornerRadius(10)
+                .padding(.horizontal)
+                .padding(.bottom, 10)
+                
+                .alert(isPresented: self.$showAlert) {
+                    Alert(title:Text(AlertMessage.ERROR), message: Text("Error while creating user.Please try again"), dismissButton: .cancel())
+                }
+                .alert(isPresented: self.$isFalseInfo) {
+                    Alert(title:Text(AlertMessage.ERROR), message: Text("You need to fill up all the details along with your profile picture"), dismissButton: .cancel())
+                }
+                //// Button2
+                NavigationLink(destination:LoginView(), isActive: $isLoginClicked,label: { EmptyView() })
+                NavigationLink(destination:FoodChoiceList(), isActive: $isSignUpSuccess,
+                               label: { EmptyView() })
+                
+                Button(action: {
+                    self.isLoginClicked = true
+                }) {
+                    Text("Already have an account? SIGN IN!")
+                        .multilineTextAlignment(.center)
+                        .frame(height: 27.0)
+                        .frame(width: 350 , height: 50, alignment: .center)
+                }
+                .foregroundColor(Color.black)
+                .cornerRadius(10)
+                .padding(.horizontal)
+                .padding(.bottom, 20)
+            }.disabled(shouldAnimate == true)
             
-        }
+        }.sheet(isPresented: self.$showingImagePicker, content: {
+            ImagePicker(picker: self.$showingImagePicker, imagedata: self.$imagedata)
+        })
         
+    }
+    
     func SignUp(){
         //convert selected birthdate to age
         let ageComponents = Calendar.current.dateComponents([.year], from: birthDate, to: Date())
         let age = String(ageComponents.year!)
+        
         if (Helper.textFieldValidatorEmail(self.email) && self.password != "" && self.name != "" && age != "") {
+            self.shouldAnimate.toggle()
             FirebaseAuthManager().userSignUp(email: self.email, password: self.password, username: self.name, age:age, gender: self.genders[selectedGender],userImageData: self.imagedata) { (success) in
                 if success{
+                    self.shouldAnimate.toggle()
                     self.isSignUpSuccess = true
                 }else{
+                    self.shouldAnimate.toggle()
                     self.showAlert = true
                 }
             }

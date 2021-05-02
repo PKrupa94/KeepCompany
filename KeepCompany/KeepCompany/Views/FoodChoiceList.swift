@@ -45,9 +45,7 @@ struct FoodChoiceList: View {
 struct FoodChoiceList_Previews: PreviewProvider {
     static var previews: some View {
         Group {
-            FoodChoiceList()
-            FoodChoiceList()
-            FoodChoiceList()
+        FoodChoiceList()
         }
     }
 }
