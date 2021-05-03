@@ -9,7 +9,6 @@ import SwiftUI
 import Firebase
 import FirebaseFirestore
 
-
 struct ChatView: View {
     var name : String
     var pic : String

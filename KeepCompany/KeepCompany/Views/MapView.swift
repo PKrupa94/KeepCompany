@@ -45,7 +45,7 @@ struct MapView: View {
                             UserPreRest.selectedRest = restaurant.restName
                             showSheet.toggle()
                         }){
-                            Text("\(restaurant.interestedUserCount)").bold().foregroundColor(.black)
+                            Text("\(restaurant.interestedUserCount)").bold().foregroundColor(.red)
                         }
                         Image(systemName: "mappin.circle.fill")
                             .font(.title)
@@ -59,7 +59,7 @@ struct MapView: View {
                             }
                         Button(action:{
                         }){
-                            Text(restaurant.restName).bold().foregroundColor(.black)
+                            Text(restaurant.restName).bold().foregroundColor(.red)
                         }
                     }
                 }

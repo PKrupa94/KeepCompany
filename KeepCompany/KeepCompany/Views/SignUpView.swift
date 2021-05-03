@@ -30,10 +30,7 @@ struct SignUP : View {
     @State private var isFalseInfo: Bool = false
     @State private var showingImagePicker = false
     @State private var shouldAnimate = false
-    
-    
     let genders = ["Male", "Female"]
-    
     
     let dateRange: ClosedRange<Date> = {
         let calendar = Calendar.current
