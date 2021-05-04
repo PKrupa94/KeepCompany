@@ -34,11 +34,17 @@ func setRecents(user: String,uid: String,pic: String,msg: String,date: Date){
     
     let myuid = Auth.auth().currentUser?.uid
     
-    let myname = userDefaults.value(forKey: TextConstant.USERNAME) as! String
+    var senderName = ""
+    if let myname = userDefaults.value(forKey: TextConstant.USERNAME) as? String{
+        senderName = myname
+    }
     
-    let mypic = userDefaults.value(forKey: TextConstant.ProfilePic) as! String
+    var senderPic = ""
+    if let mypic = userDefaults.value(forKey: TextConstant.ProfilePic) as? String{
+        senderPic = mypic
+    }
     
-    firestoreInstace.collection(FirebaseCollection.Users).document(uid).collection(FirebaseCollection.RecentMsg).document(myuid!).setData([TextConstant.USERNAME:myname,TextConstant.ProfilePic:mypic,TextConstant.LASTMSG:msg,TextConstant.MSGDATE:date]) { (err) in
+    firestoreInstace.collection(FirebaseCollection.Users).document(uid).collection(FirebaseCollection.RecentMsg).document(myuid!).setData([TextConstant.USERNAME:senderName,TextConstant.ProfilePic:senderPic,TextConstant.LASTMSG:msg,TextConstant.MSGDATE:date]) { (err) in
         
         if err != nil{
             
